@@ -1,0 +1,77 @@
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
+        window.Typebot = Typebot; // Disponibiliza o Typebot globalmente
+    </script>
+</head>
+<body>
+    <!-- Chat de Chamada -->
+<div id="chat-call" class="chat-container">
+    <!-- Bolha de Mensagem -->
+    <div class="chat-bubble">
+        <div class="typing-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <!-- Avatar no lado direito -->
+    <div class="profile-container">
+        <img src="https://s3.typebot.io/public/workspaces/cm1phfshl003t3eii8w05yvqa/typebots/cm2uxrjgl000114hkqz5xo2ta/blocks/phehu4kfk6fvxk7f0qr2h17y?v=1734639126382" 
+             alt="Foto do Perfil" class="profile-pic">
+    </div>
+</div>
+
+
+    <!-- Chat Já -->
+    <div id="chat-now" class="chat-container" style="display: none;">
+        <div class="sidebar"></div>
+        <div class="chat-header">
+            <div class="user-img"></div>
+            <div class="user-info">
+                <span class="user-name">Elisa - Araponto</span>
+                <span class="user-status">Online agora</span>
+            </div>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="chat-body">
+            <div class="message typing-bubble" id="typing-bubble">
+                <div class="user-img"></div>
+                <span class="chat-text typing-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </span>
+            </div>
+            <div class="message" id="message-1" style="display: none;">
+                <div class="user-img"></div>
+                <span class="chat-text">Olá, tudo bem?</span>
+            </div>
+            <div class="message typing-bubble" id="typing-bubble-2" style="display: none;">
+                <div class="user-img"></div>
+                <span class="chat-text typing-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </span>
+            </div>
+            <div class="message message-offer" id="message-2" style="display: none;">
+                <p>Quer <strong>Começar</strong> seu <strong>Teste Grátis</strong> da Plataforma? 😍</p>
+                <button class="start-btn">
+                    Sim, começar agora <span class="arrow">→</span>
+                </button>
+                <p class="privacy">Clicando acima você aceita nossas <a href="#">Políticas de Privacidade</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
+
