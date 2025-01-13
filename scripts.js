@@ -33,31 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Exibir o Chat Call inicialmente
     startChatCallSequence();
 
+    // Adiciona o script do Typebot
+    const typebotInitScript = document.createElement("script");
+    typebotInitScript.type = "module";
+    typebotInitScript.innerHTML = `
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
+
+        Typebot.initBubble({
+            typebot: "${typebotID}", // Substitua com o seu ID do Typebot
+            theme: {
+                button: {
+                    backgroundColor: "#075E54", // Cor de fundo do botão
+                    size: "large", // Tamanho do botão (small, medium, large)
+                },
+            },
+        });
+
+        // Função para abrir o Typebot quando o botão de envio for clicado
+        window.openTypebot = function() {
+            Typebot.open(); // Método para abrir o chat
+        }
+    `;
+
+    // Adiciona o script ao corpo do documento
+    document.body.append(typebotInitScript);
+
     // Evento de clique no Chat Call para abrir o Typebot
     chatChamada.addEventListener('click', () => {
         console.log("Chat Call clicado! Inicializando Typebot...");
-        if (window.Typebot) {
-            Typebot.initBubble({
-                typebot: typebotID,
-                theme: {
-                    button: {
-                        backgroundColor: "#075E54",
-                        size: "large"
-                    }
-                },
-            });
-            Typebot.open();
-            document.body.classList.add('typebot-active'); // Adiciona classe para ocultar outros chats
-        } else {
-            console.error("Typebot não está disponível no momento.");
-        }
+        window.openTypebot(); // Abre o Typebot
     });
 
     // Evento de clique no botão de fechar para restaurar o estado inicial
     if (closeButton) {
         closeButton.addEventListener('click', () => {
             console.log("Botão de fechar clicado!");
-            document.body.classList.remove('typebot-active'); // Remove a classe para mostrar outros chats
             chatChamada.style.display = 'flex'; // Mostra novamente o Chat Call
         });
     }
@@ -72,19 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (!userInteracted) {
             console.log("Exibindo o Typebot automaticamente após 20 segundos...");
-            if (window.Typebot) {
-                Typebot.initBubble({
-                    typebot: typebotID,
-                    theme: {
-                        button: {
-                            backgroundColor: "#075E54",
-                            size: "large"
-                        }
-                    },
-                });
-                Typebot.open();
-                document.body.classList.add('typebot-active'); // Adiciona classe para ocultar outros chats
-            }
+            window.openTypebot(); // Abre o Typebot
         }
     }, 20000); // 20 segundos
 });
