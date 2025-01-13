@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBubble = document.querySelector('.chat-bubble'); // Bolha de mensagem
     const closeButton = document.querySelector('.close-btn'); // Botão de fechar
 
-    // URL do Typebot hospedado no GitHub Pages
+    // ID do Typebot
     const typebotID = "lead-magnet-3a9mx2z"; // Substitua pelo seu ID do Typebot
-    const githubURL = `https://chatzapatendimento.github.io/minichatneurologic/?typebot=${typebotID}`;
 
     // Inicia a sequência do Chat Call (efeito de digitação e mensagem)
     const startChatCallSequence = () => {
@@ -36,14 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento de clique no Chat Call para abrir o Typebot
     chatChamada.addEventListener('click', () => {
-        console.log("Chat Call clicado! Abrindo Typebot...");
-        window.location.href = githubURL; // Redireciona para o Typebot
+        console.log("Chat Call clicado! Inicializando Typebot...");
+        if (window.Typebot) {
+            Typebot.initBubble({
+                typebot: typebotID,
+                theme: {
+                    button: {
+                        backgroundColor: "#075E54",
+                        size: "large"
+                    }
+                },
+            });
+            Typebot.open();
+            document.body.classList.add('typebot-active'); // Adiciona classe para ocultar outros chats
+        } else {
+            console.error("Typebot não está disponível no momento.");
+        }
     });
 
     // Evento de clique no botão de fechar para restaurar o estado inicial
     if (closeButton) {
         closeButton.addEventListener('click', () => {
             console.log("Botão de fechar clicado!");
+            document.body.classList.remove('typebot-active'); // Remove a classe para mostrar outros chats
             chatChamada.style.display = 'flex'; // Mostra novamente o Chat Call
         });
     }
@@ -57,8 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         if (!userInteracted) {
-            console.log("Exibindo apenas o Typebot automaticamente após 20 segundos...");
-            window.location.href = githubURL; // Redireciona para o Typebot
+            console.log("Exibindo o Typebot automaticamente após 20 segundos...");
+            if (window.Typebot) {
+                Typebot.initBubble({
+                    typebot: typebotID,
+                    theme: {
+                        button: {
+                            backgroundColor: "#075E54",
+                            size: "large"
+                        }
+                    },
+                });
+                Typebot.open();
+                document.body.classList.add('typebot-active'); // Adiciona classe para ocultar outros chats
+            }
         }
-    }, 30000); // 30 segundos
+    }, 20000); // 20 segundos
 });
