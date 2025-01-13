@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Criar um contêiner para o modal parcial
     const modalContainer = document.createElement('div');
     modalContainer.id = 'modal-container';
-    modalContainer.style.position = 'fixed';
-    modalContainer.style.top = '10%';
-    modalContainer.style.right = '10px';
+    modalContainer.style.position = 'absolute';
+    modalContainer.style.top = '20px';
+    modalContainer.style.right = '20px';
     modalContainer.style.width = '400px';
-    modalContainer.style.height = '95%';
+    modalContainer.style.height = '80%';
     modalContainer.style.backgroundColor = '#fff';
     modalContainer.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
     modalContainer.style.borderRadius = '8px';
