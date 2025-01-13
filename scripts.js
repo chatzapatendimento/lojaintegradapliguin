@@ -6,16 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Criar um contêiner para o modal parcial
     const modalContainer = document.createElement('div');
     modalContainer.id = 'modal-container';
-    modalContainer.style.position = 'absolute';
-    modalContainer.style.top = '20px';
+    modalContainer.style.position = 'fixed';
+    modalContainer.style.bottom = '20px';
     modalContainer.style.right = '20px';
+    modalContainer.style.minWidth = '300px';
+    modalContainer.style.maxWidth = '600px';
     modalContainer.style.width = '400px';
-    modalContainer.style.height = '80%';
+    modalContainer.style.height = '60%';
     modalContainer.style.backgroundColor = '#fff';
     modalContainer.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
     modalContainer.style.borderRadius = '8px';
     modalContainer.style.display = 'none'; // Inicialmente oculto
-    modalContainer.style.zIndex = '9999';
+    modalContainer.style.zIndex = '1000';
 
     // Criar iframe para carregar o Typebot dentro do modal
     const typebotIframe = document.createElement('iframe');
