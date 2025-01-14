@@ -1,44 +1,3 @@
-    document.addEventListener('DOMContentLoaded', () => {
-    const chatCall = document.getElementById('chat-call'); // Contêiner principal do Chat Call
-    const chatBubble = document.querySelector('.chat-bubble'); // Bolha de mensagem
-    const avatar = document.querySelector('.profile-container'); // Avatar do Chat Call
-
-    const startChatCallSequence = () => {
-        if (chatBubble) {
-            // Passo 1: Mostra a bolha com efeito de digitação
-            chatBubble.innerHTML = `
-                <div class="typing-dots">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            `;
-            chatBubble.style.display = 'flex'; // Garante que a bolha esteja visível
-
-            // Passo 2: Após 3 segundos, substitui a bolha de digitação pela mensagem
-            setTimeout(() => {
-                chatBubble.innerHTML = `
-                    <p>
-                        Quer <strong>Começar</strong> seu <strong>Teste Grátis</strong> da Plataforma? 
-                        <span class="emoji">😄</span>
-                    </p>
-                `;
-                chatBubble.style.display = 'flex'; // Garante que a mensagem apareça no mesmo lugar
-            }, 3000); // Transição após 3 segundos
-        }
-    };
-
-    // Garante que o avatar e a bolha estejam visíveis no início
-    if (chatCall) {
-        chatCall.style.display = 'flex';
-        avatar.style.display = 'flex';
-        chatBubble.style.display = 'flex';
-    }
-
-    // Inicia a sequência
-    startChatCallSequence();
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     // Selecionar os elementos do chat
     const chatChamada = document.getElementById('chat-call'); // Chat de Chamada
@@ -257,7 +216,7 @@ setTimeout(() => {
         if (window.Typebot) {
             console.log("Inicializando Typebot...");
             Typebot.initBubble({
-                typebot: "lead-magnet-3a9mx2z", // Substitua pelo seu ID do Typebot
+                typebot: "teste-gr-tis-r-hi-d-2-sxqn5c8", // Substitua pelo seu ID do Typebot
                 theme: {
                     button: {
                         backgroundColor: "#075E54",
@@ -275,23 +234,19 @@ setTimeout(() => {
 // Adicionar evento de clique ao Chat Call para abrir o Typebot
 if (chatChamada) {
     chatChamada.addEventListener('click', () => {
-        console.log("Chat Call clicado! Redirecionando para o novo link...");
-        window.location.href = 'https://chatzapatendimento.github.io/minichatneurologic/'; // Substitua pelo link desejado
+        console.log("Chat Call clicado!");
+        initializeTypebot(); // Inicializa o Typebot
     });
 }
 
     // Botão "Sim, começar agora" para inicializar o Typebot
- 
-        // Seleção do botão "Sim, testar agora"
-        const testNowButton = document.querySelector('.start-btn'); // Certifique-se de que o botão possui a classe .start-btn
-
-        if (testNowButton) {
-            testNowButton.addEventListener('click', () => {
-                console.log("Botão 'Sim, testar agora' clicado!");
-                window.location.href = 'https://chatzapatendimento.github.io/minichatneurologic/'; // Link do Typebot
-            });
-        }
-
+    const startButton = document.querySelector('.start-btn');
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            console.log("Botão 'Sim, começar agora' clicado!");
+            initializeTypebot(); // Inicializa o Typebot
+        });
+    }
 
     // Restaurar comportamento após fechar o Typebot
     if (window.Typebot) {
