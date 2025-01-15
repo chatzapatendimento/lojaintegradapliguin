@@ -1,4 +1,3 @@
-/* Estilo Geral */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -7,6 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: #f9f9f9;
+    background: transparent !important; /* Torna o fundo do chat transparente */
 }
 
 /* Contêiner do Chat Call */
@@ -19,13 +19,10 @@ body {
     gap: 15px;
     max-width: 360px;
     z-index: 1000;
-}
-
-#chat-call {
     cursor: pointer; /* Indica ao usuário que o elemento é clicável */
 }
+
 /* Estilo do Balão de Mensagem */
-/* Bolha de mensagem */
 .chat-bubble {
     background-color: #fff;
     border-radius: 10px;
@@ -55,6 +52,7 @@ body {
     border-bottom: 12px solid #fff;
     transform: translateY(-50%);
 }
+
 /* Efeito de digitação */
 .typing-dots {
     display: flex;
@@ -87,6 +85,7 @@ body {
         opacity: 1;
     }
 }
+
 /* Contêiner do Avatar */
 .profile-container {
     width: 60px;
@@ -214,20 +213,13 @@ body {
         opacity: 1;
     }
 }
+
 /* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 #chat-now {
@@ -246,7 +238,6 @@ body {
     font-size: 14px;
 }
 
-
 /* Barra lateral com degradê */
 .sidebar {
     background: linear-gradient(to top, transparent, #B30400 20%, transparent);
@@ -263,6 +254,7 @@ body {
     align-items: center;
     padding: 14px 12px;
     position: relative;
+    z-index: 1001; /* Garantir que o cabeçalho fique acima do chat */
 }
 
 .user-img { 
@@ -375,7 +367,6 @@ body {
     background-color: #8A0200; /* Cor ao passar o mouse */
 }
 
-
 .message {
     display: flex;
     align-items: flex-start; /* Garante alinhamento no topo */
@@ -430,12 +421,10 @@ body {
     /* margin-right: 50px;  Para deslocar à direita, use esta linha */
 }
 
-
 .message-offer p {
     margin-bottom: 14px;
     font-size: 14px;
     line-height: 1.6;
-    
 }
 
 .start-btn {
@@ -472,38 +461,6 @@ body {
     color: #0095f6;
     text-decoration: none;
 }
-.typing-dots {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    background-color: #B30400; /* Cor do pontinho */
-    border-radius: 50%;
-    animation: blink 1.2s infinite;
-}
-
-.dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 0.2;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
 
 /* Aplica a animação às mensagens */
 .message {
@@ -532,6 +489,7 @@ body.typebot-active #chat-now {
 body.typebot-active {
     overflow: hidden;
 }
+
 /* Estilo para a bolha de digitação no Chat Call */
 .chat-bubble .typing-dots {
     display: flex;
@@ -564,4 +522,95 @@ body.typebot-active {
     50% {
         opacity: 1;
     }
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 480px) {
+    #chat-call {
+        position: fixed; /* Fixa o Chat Call na tela */
+        bottom: 65px; /* Define 40px de distância do rodapé */
+        right: 15px; /* Mantém 20px da lateral direita */
+        display: flex; /* Garante o alinhamento interno */
+        align-items: center; /* Alinha o conteúdo verticalmente */
+        z-index: 10000; /* Garante que o Chat Call fique acima de outros elementos */
+    }
+
+    .chat-bubble {
+        max-width: 75%; /* Reduz a largura do balão */
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+        padding: 10px 15px; /* Espaçamento interno */
+        border-radius: 6px; /* Bordas arredondadas mais suaves */
+        margin-left: 8px; /* Espaço para afastar do avatar */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra mais sutil */
+    }
+
+    /* Ajustar o avatar */
+    .profile-container {
+        width: 60px; /* Tamanho menor do avatar */
+        height: 60px;
+    }
+
+    .profile-pic {
+        width: 55px; /* Ajuste da imagem no avatar */
+        height: 55px;
+    }
+
+    /* Ajustar o indicador de status online */
+    .profile-container::after {
+        width: 8px; /* Indicador menor */
+        height: 8px;
+        bottom: 5px; /* Ajuste de posição */
+        right: 5px; /* Ajuste de posição */
+    }
+
+    /* Ajustar o contêiner geral do Chat Call */
+    #chat-call {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Espaço entre o balão e o avatar */
+    }
+
+    #chat-now {
+        position: fixed; /* Fixa o Chat Now na tela */
+        bottom: 0; /* Alinha na parte inferior */
+        left: 0; /* Remove posicionamento à direita */
+        width: 100%; /* Garante que ocupe toda a largura */
+        height: 90%; /* Define altura de 90% da tela */
+        background-color: #fff; /* Fundo branco */
+        border-radius: 12px 12px 0 0; /* Bordas arredondadas no topo */
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+        z-index: 10000; /* Certifica que esteja acima de outros elementos */
+        margin: 0; /* Remove margens */
+        padding: 0; /* Remove espaçamentos internos */
+        box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+    }
+
+    .chat-body {
+        padding: 20px; /* Ajuste do espaçamento interno */
+        background-color: #f9f9f9; /* Fundo do contêiner */
+        overflow-y: auto; /* Adiciona rolagem vertical, se necessário */
+        max-height: 75%; /* Aumenta o comprimento máximo */
+        height: calc(100% - 60px); /* Ajusta dinamicamente a altura */
+        width: 100%; /* Garante que o contêiner ocupe toda a largura */
+        box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+    }
+
+    .chat-header {
+        width: 100%; /* Ocupa toda a largura */
+        box-sizing: border-box; /* Garante largura correta */
+    }
+}
+
+#chat-iframe {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 660px;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+#chat-iframe:hover {
+    pointer-events: auto; /* Ativa cliques no chat quando o usuário interage */
 }
