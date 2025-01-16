@@ -216,7 +216,7 @@ setTimeout(() => {
         if (window.Typebot) {
             console.log("Inicializando Typebot...");
             Typebot.initBubble({
-                typebot: "teste-gr-tis-r-hi-d-2-sxqn5c8", // Substitua pelo seu ID do Typebot
+                typebot: "lead-magnet-3a9mx2z", // Substitua pelo seu ID do Typebot
                 theme: {
                     button: {
                         backgroundColor: "#075E54",
@@ -234,19 +234,24 @@ setTimeout(() => {
 // Adicionar evento de clique ao Chat Call para abrir o Typebot
 if (chatChamada) {
     chatChamada.addEventListener('click', () => {
-        console.log("Chat Call clicado!");
-        initializeTypebot(); // Inicializa o Typebot
+        console.log("Chat Call clicado! Redirecionando para o novo link...");
+        window.location.href = 'https://chatzapatendimento.github.io/minichatneurologic/'; // Substitua pelo link desejado
     });
 }
 
+
     // Botão "Sim, começar agora" para inicializar o Typebot
-    const startButton = document.querySelector('.start-btn');
-    if (startButton) {
-        startButton.addEventListener('click', () => {
-            console.log("Botão 'Sim, começar agora' clicado!");
-            initializeTypebot(); // Inicializa o Typebot
-        });
-    }
+ 
+        // Seleção do botão "Sim, testar agora"
+        const testNowButton = document.querySelector('.start-btn'); // Certifique-se de que o botão possui a classe .start-btn
+
+        if (testNowButton) {
+            testNowButton.addEventListener('click', () => {
+                console.log("Botão 'Sim, testar agora' clicado!");
+                window.location.href = 'https://chatzapatendimento.github.io/minichatneurologic/'; // Link do Typebot
+            });
+        }
+
 
     // Restaurar comportamento após fechar o Typebot
     if (window.Typebot) {
