@@ -15,7 +15,7 @@ body {
     align-items: center;
     gap: 15px;
     max-width: 360px;
-    z-index: 999;
+    z-index: 10000;
 }
 
 #chat-call {
